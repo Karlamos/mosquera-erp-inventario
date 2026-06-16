@@ -18,3 +18,10 @@ ssh-keygen -t ed25519 -C "mosquera-erp-inventario" -f ~/.ssh/mosquera-blog-githu
 
 GIT_SSH_COMMAND='ssh -i ~/.ssh/mosquera-erp-inventario-github-deploy' git clone git@github.com:Karlamos/mosquera-erp-inventario.git /opt/mosquera-erp-inventario
 cd /root/nestjs-blog-backend
+
+
+
+
+
+sudo ln -s /etc/nginx/sites-available/mosquera-erp /etc/nginx/sites-enabled/
+40.82.180.42
