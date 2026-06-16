@@ -31,13 +31,14 @@ jobs:
           set -e
           cd /opt/mosquera-erp-inventario
 
-          # Volver a inyectar las variables del .env actualizadas
+          sudo lsof -t -i:3000 | xargs -r sudo kill -9 || true
+
           printf "%s" "${{ secrets.ENV_FILE }}" > .env
 
-          # Instalación limpia y build de NestJS con permisos correctos
-          npm ci --unsafe-perm
+          npm install --legacy-peer-deps
           npm run build
 
-          # Reinicio inteligente en PM2 para no perder el uptime ni configuraciones
-          pm2 restart mosquera-erp-inventario-api --update-env || pm2 start dist/main.js --name mosquera-erp-inventario-api
+          pm2 stop mosquera-erp-inventario-api || true
+          pm2 delete mosquera-erp-inventario-api || true
+          pm2 start dist/main.js --name mosquera-erp-inventario-api
           pm2 save

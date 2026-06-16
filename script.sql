@@ -25,3 +25,7 @@ cd /root/nestjs-blog-backend
 
 sudo ln -s /etc/nginx/sites-available/mosquera-erp /etc/nginx/sites-enabled/
 40.82.180.42
+
+mosquera-erp-inventario-api
+
+mosquera-erp-inventario
